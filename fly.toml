@@ -1,0 +1,27 @@
+# fly.toml app configuration file generated for xweb on 2026-06-16T16:05:22+08:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'xweb'
+primary_region = 'lhr'
+
+[build]
+
+[http_service]
+  internal_port = 10000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '256mb'
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 256
+
+[mounts]
+  source = "data"      # 创建的 volume 名称
+  destination = "/opt/"   # Docker 容器内部挂载的目录路径
