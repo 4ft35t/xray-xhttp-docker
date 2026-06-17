@@ -7,7 +7,7 @@
 
 在容器平台将 docker 部署到对应区域，即可活得对应地区的出口 IP。
 
-使用 Xray，原生支持 UDP。
+使用 Xray，原生支持 UDP-over-TCP。
 
 关键配置内容存储在 `Secrets`, 容器重启也不丢配置。
 
@@ -23,6 +23,6 @@
 - vless://<YOUR_UUID>@<YOUR_APP_HOST>:443?encryption=none&security=tls&type=xhttp&path=%2F<YOUR_XHTTP_PATH>#DOCKER_VLESS_XHTTP
 - clash 格式配置
   ```yaml
-    - {name: DOCKER_VLESS_XHTTP, server: <YOUR_APP_HOST>, port: 443, type: vless, uuid: <YOUR_UUID>, tls: true, xhttp-opts: {path: /<YOUR_XHTTP_PATH>, mode: auto}, network: xhttp}
+    - {name: DOCKER_VLESS_XHTTP, server: <YOUR_APP_HOST>, port: 443, type: vless, uuid: <YOUR_UUID>, tls: true, xhttp-opts: {path: /<YOUR_XHTTP_PATH>, mode: auto}, network: xhttp, udp: true}
   ```
   
