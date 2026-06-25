@@ -2,6 +2,8 @@
 
 mkdir -p /etc/xray /usr/share/xray/
 
+HTTP_PORT=${HTTP_PORT:-10000}
+
 if [ ! -f /usr/bin/xray ]
 then
 	# download
@@ -22,7 +24,7 @@ cat <<EOF > /etc/xray/config.json
   "inbounds": [
     {
       "listen": "0.0.0.0",
-      "port": 10000,
+      "port": $HTTP_PORT,
       "protocol": "vless",
       "settings": {
         "clients": [
