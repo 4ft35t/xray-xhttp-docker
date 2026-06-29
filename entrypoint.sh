@@ -26,14 +26,14 @@ install_xray(){
 
 # wgcf
 set_wgcf() {
-    [ "$WGCF_CONF" ] || return
+    [ "$WGCF_CONF_URL" ] || return
 
     echo "set wgcf"
     if [ -f /opt/wgcf.conf ]
     then
         cp /opt/wgcf.conf /etc/wireguard/wgcf.conf
     else
-        cd /etc/wireguard && wget $WGCF_CONF
+        cd /etc/wireguard && wget $WGCF_CONF_URL
         cp /etc/wireguard/wgcf.conf /opt/wgcf.conf
     fi
 

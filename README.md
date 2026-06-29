@@ -16,6 +16,19 @@
 在容器平台添加两个 `Secrets`
 - `UUID` 使用 `xray uuid` 生成
 - `XHTTP_PATH` 使用 `xray uuid | cut -d- -f1` 生成，__没有 /__
+- 可选，设置 `WGCF_CONF_URL` 后在容器中套 Warp 出口。用 wgcf 生成 /etc/warp/wgcf-profile.conf，改名成 `wgcf.conf` 然后上传到 github gist，复制 raw 链接即可。
+在 `[Interface]` 下添加 `Table = off` 禁用 warp 的路由表，使用 xray 的出口绑定来实现 IP 的切换。
+```ini
+[Interface]
+Table = off
+PrivateKey = ...
+Address = 172.16.0.2/32
+MTU = 1280
+[Peer]
+PublicKey = ...
+AllowedIPs = 0.0.0.0/0
+Endpoint = engage.cloudflareclient.com:2408
+```
 
 部署完成后即可使用。
 
