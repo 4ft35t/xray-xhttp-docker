@@ -5,7 +5,7 @@ WORKDIR /tmp
 COPY entrypoint.sh /entrypoint.sh
 
 RUN set -ex \
-    && apk add --no-cache tzdata openssl ca-certificates
+    && apk add --no-cache tzdata openssl ca-certificates wireguard-tools
 
 EXPOSE 10000
 
