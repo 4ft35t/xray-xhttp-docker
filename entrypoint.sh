@@ -76,8 +76,8 @@ cat <<EOF > /etc/xray/config.json
   "outbounds": [
     {
       "protocol": "freedom",
-      "sockopt": {
-        "interface": "$INTERFACE"
+      "streamSettings": {
+        "sockopt": {"interface": "$INTERFACE"}
       }
     }
   ]
